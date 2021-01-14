@@ -1,2 +1,1 @@
-![image of wireframe]
-(./images/dailyJournalWireframe.png)
+![image of wireframe](./images/dailyJournalWireframe.png)

@@ -2,15 +2,40 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>Nashville Software School</title>
+        <title>Daily Journal</title>
         <link rel="stylesheet" href="./styles/main.css">
     </head>
 
     <body>
-        <main id="container">
-
-        </main>
-
+        <h1>Code Still More</h1>
+        <form action="">
+            <fieldset>
+                <label for="jounalDate">Date of entry</label>
+                <input type="date" name="journalDate">
+            </fieldset>
+            <fieldset>
+                <label for="conceptsCovered">Concepts covered</label>
+                <input type="text" name="conceptsCovered">
+            </fieldset>
+            <fieldset>
+                <label for="dailyGrowth">What did I learn to do?</label>
+                <input type="textarea" name="dailyGrowth">
+            </fieldset>
+            <fieldset>
+                <label for="plans">What are my plans for tomorrow?</label>
+                <input type="textarea" name="plans">
+            </fieldset>
+            <fieldset>
+                <label for="feelings">How am I feeling about development today?</label>
+                <select name="mood" id="moodSelector">
+                    <option value="">Please Select One</option>
+                    <option value="Good">Excited for more</option>
+                    <option value="Medium">This is enough for one day</option>
+                    <option value="Bad">I need some time away</option>
+                </select>
+            </fieldset>
+            <button>Save Entry</button>
+        </form>
         <script type="module" src="./scripts/main.js"></script>
     </body>
 </html>

@@ -7,39 +7,10 @@
         <link rel="shortcut icon" href="#" type="#">
     </head>
 
-    <body>
+    <body class="container">
         <h1 class="header">Code Still More</h1>
-        <form action="">
-            <fieldset>
-                <label for="journalDate">Date of entry</label>
-                <input type="date" name="date">
-            </fieldset>
-            <fieldset>
-                <label for="conceptsCovered">Concepts covered</label>
-                <input type="text" name="concept">
-            </fieldset>
-            <fieldset>
-                <label for="dailyGrowth">What did I learn to do?</label>
-                <input type="textarea" name="entry">
-            </fieldset>
-            <fieldset>
-                <label for="plans">What are my plans for tomorrow?</label>
-                <input type="textarea" name="plan">
-            </fieldset>
-            <fieldset>
-                <label for="feelings">How am I feeling about development today?</label>
-                <select name="mood" id="moodSelector">
-                    <option value="mood">Please Select One</option>
-                    <option value="mood">Excited for more</option>
-                    <option value="mood">This is enough for one day</option>
-                    <option value="mood">I need some time away</option>
-                </select>
-            </fieldset>
-            <button>Save Entry</button>
-        </form>
-        <section id="entryLog">
-
-        </section>
-        <script type="module" src="./scripts/main.js"></script>
+        <form class="journalEntryContainer" action=""></form>
+        <section id="entryLog"></section>
     </body>
+    <script type="module" src="./scripts/main.js"></script>
 </html>

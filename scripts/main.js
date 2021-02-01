@@ -1,7 +1,4 @@
-console.log("Welcome to the main module")
+import { JournalEntryList } from "./JournalEntryList.js";
 
-import { EntryListComponent } from './JournalEntryList.js'
-const contentTarget = document.querySelector(".header")
-debugger
 
-EntryListComponent ()
+JournalEntryList ()

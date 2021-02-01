@@ -21,7 +21,7 @@ const render = journalEntryArray => {
         journalHTMLRepresentation += JournalEntryComponent(entry)
     }
 
-    entryLog.innerHTML += `
+    entryLog.innerHTML = `
             ${journalHTMLRepresentation}
         `
 }

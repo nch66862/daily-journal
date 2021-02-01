@@ -7,6 +7,30 @@
       "plans": "Ball out",
       "mood": "1",
       "id": 1
+    },
+    {
+      "date": "2021-02-01",
+      "concept": "Removing lines of code",
+      "learned": "take lines of code out without changing things",
+      "plans": "go even faster",
+      "mood": "1",
+      "id": 2
+    },
+    {
+      "date": "2021-02-01",
+      "concept": "Is my journal double displaying entries?",
+      "learned": "less and less",
+      "plans": "figure this out",
+      "mood": "1",
+      "id": 3
+    },
+    {
+      "date": "2021-02-01",
+      "concept": "Did I fix it and remove a line of code?",
+      "learned": "Not sure yet",
+      "plans": "keep ballin",
+      "mood": "1",
+      "id": 4
     }
   ]
 }

@@ -21,7 +21,12 @@ const render = journalEntryArray => {
         journalHTMLRepresentation += JournalEntryComponent(entry)
     }
 
-    entryLog.innerHTML += `
+    entryLog.innerHTML = `
             ${journalHTMLRepresentation}
         `
 }
+
+const eventHub = document.querySelector(".container") //define what the eventHub will be (needs to be the same across the application)
+eventHub.addEventListener("journalStateChanged", Event => {
+    JournalEntryList()
+})

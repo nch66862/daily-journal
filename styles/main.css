@@ -27,3 +27,9 @@ fieldset {
 	display: flex;
 	flex-direction: column;
 }
+
+.journalEntry {
+	border: solid black 1px;
+	border-radius: 3%;
+	background-color: bisque;
+}

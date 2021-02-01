@@ -1,4 +1,4 @@
-// import { saveNote } from "./NoteDataProvider.js"
+import { saveJournalEntry } from '../entries/JournalDataProvider.js'
 
 const contentTarget = document.querySelector(".journalEntryContainer")
 
@@ -51,7 +51,7 @@ eventHub.addEventListener("click", clickEvent => {
             mood: document.getElementById("entry-mood").value
         }
         // Change API state and application state
-        saveNote(newEntry)
+        saveJournalEntry(newEntry)
         document.getElementById("entry-date").value = ""
         document.getElementById("entry-concept").value = ""
         document.getElementById("entry-learned").value = ""

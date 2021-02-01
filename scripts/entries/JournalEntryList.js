@@ -25,3 +25,8 @@ const render = journalEntryArray => {
             ${journalHTMLRepresentation}
         `
 }
+
+const eventHub = document.querySelector(".container") //define what the eventHub will be (needs to be the same across the application)
+eventHub.addEventListener("journalStateChanged", Event => {
+    JournalEntryList()
+})

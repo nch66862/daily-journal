@@ -1,4 +1,4 @@
-import { JournalEntryList } from "./JournalEntryList.js";
+import { JournalEntryList } from "./entries/JournalEntryList.js";
 
 
 JournalEntryList ()

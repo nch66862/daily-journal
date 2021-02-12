@@ -1,8 +1,9 @@
 import { saveJournalEntry } from '../entries/JournalDataProvider.js'
+import { getMoods, useMoods } from '../moods/MoodProvider.js'
 
 const contentTarget = document.querySelector(".journalEntryContainer")
 
-const render = () => {
+const render = (moodsArray) => {
     contentTarget.innerHTML = `
     <fieldset>
         <label for="journalDate">Date of entry</label>
@@ -24,9 +25,7 @@ const render = () => {
         <label for="feelings">How am I feeling about development today?</label>
         <select name="mood" id="entry-mood">
             <option value="0">Please Select One</option>
-            <option value="1">Excited for more</option>
-            <option value="2">This is enough for one day</option>
-            <option value="3">I need some time away</option>
+            ${moodsArray.map(mood => `<option value="${mood.id}">${mood.label}</option>`)}
         </select>
     </fieldset>
     <button id="saveJournalEntry">Save Entry</button>
@@ -34,7 +33,11 @@ const render = () => {
 }
 
 export const JournalForm = () => {
-    render()
+    getMoods()
+        .then(() => {
+            const arrayOfMoods = useMoods()
+            render(arrayOfMoods)
+        })
 }
 
 // Handle browser-generated click event in component

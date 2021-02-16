@@ -19,7 +19,7 @@ export const useJournalEntries = () => {
 
 export const saveJournalEntry = (journalEntryObject) => {
     // Use `fetch` with the POST method to add your entry to your API
-    fetch("http://localhost:8088/entries", {
+    return fetch("http://localhost:8088/entries", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -42,4 +42,3 @@ const eventHub = document.querySelector(".container")
 const dispatchStateChangeEvent = () => {
     eventHub.dispatchEvent(new CustomEvent("journalStateChanged"))
 }
-

@@ -24,9 +24,13 @@ const render = (moodsArray) => {
     <fieldset>
         <label for="feelings">How am I feeling about development today?</label>
         <select name="mood" id="entry-mood">
-            <option value="0">Please Select One</option>
-            ${moodsArray.map(mood => `<option value="${mood.id}">${mood.label}</option>`)}
+        <option value="0">Please Select One</option>
+        ${moodsArray.map(mood => `<option value="${mood.id}">${mood.label}</option>`)}
         </select>
+    </fieldset>
+    <fieldset>
+        <label for="tags">Tags</label>
+        <input id="entry-tags" type="text" name="tag">
     </fieldset>
     <button id="saveJournalEntry">Save Entry</button>
 `
@@ -46,6 +50,8 @@ eventHub.addEventListener("click", clickEvent => {
     if (clickEvent.target.id === "saveJournalEntry") {
         clickEvent.preventDefault()
         // Make a new object representation of a note
+        const tagArray = document.getElementById("entry-tags").value.split(",")
+        console.log('tagArray: ', tagArray);
         const newEntry = {
             date: document.getElementById("entry-date").value,
             concept: document.getElementById("entry-concept").value,

@@ -51,7 +51,6 @@ eventHub.addEventListener("click", clickEvent => {
         clickEvent.preventDefault()
         // Make a new object representation of a note
         const tagArray = document.getElementById("entry-tags").value.split(",")
-        console.log('tagArray: ', tagArray);
         const newEntry = {
             date: document.getElementById("entry-date").value,
             concept: document.getElementById("entry-concept").value,
@@ -66,5 +65,6 @@ eventHub.addEventListener("click", clickEvent => {
         document.getElementById("entry-learned").value = ""
         document.getElementById("entry-plans").value = ""
         document.getElementById("entry-mood").value = ""
+        document.getElementById("entry-tags").value = ""
 }
 })

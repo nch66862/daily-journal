@@ -63,22 +63,6 @@
       "plans": "Not sure yet. Probably the same.",
       "moodId": 1,
       "id": 8
-    },
-    {
-      "date": "2021-02-16",
-      "concept": "awv",
-      "learned": "avw",
-      "plans": "ave",
-      "moodId": 1,
-      "id": 9
-    },
-    {
-      "date": "2021-02-16",
-      "concept": "awrg",
-      "learned": "arga",
-      "plans": "avewr",
-      "moodId": 3,
-      "id": 10
     }
   ],
   "moods": [
@@ -113,21 +97,6 @@
     {
       "id": 1,
       "entryId": 4,
-      "tagId": 2
-    },
-    {
-      "id": 2,
-      "entryId": 4,
-      "tagId": 3
-    },
-    {
-      "id": 2,
-      "entryId": 9,
-      "tagId": 1
-    },
-    {
-      "id": 2,
-      "entryId": 9,
       "tagId": 2
     }
   ]

@@ -30,6 +30,14 @@ export const saveJournalEntry = (journalEntryObject) => {
     .then(dispatchStateChangeEvent)  // <-- Broadcast the state change event
 }
 
+export const deleteJournalEntry = noteId => {
+    return fetch(`http://localhost:8088/entries/${noteId}`, {
+        method: "DELETE"
+    })
+        .then(getEntries)
+        .then(dispatchStateChangeEvent)
+}
+
 const eventHub = document.querySelector(".container")
 const dispatchStateChangeEvent = () => {
     eventHub.dispatchEvent(new CustomEvent("journalStateChanged"))

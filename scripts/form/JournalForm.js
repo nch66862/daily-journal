@@ -51,7 +51,7 @@ eventHub.addEventListener("click", clickEvent => {
             concept: document.getElementById("entry-concept").value,
             learned: document.getElementById("entry-learned").value,
             plans: document.getElementById("entry-plans").value,
-            mood: parseInt(document.getElementById("entry-mood").value)
+            moodId: parseInt(document.getElementById("entry-mood").value)
         }
         // Change API state and application state
         saveJournalEntry(newEntry)

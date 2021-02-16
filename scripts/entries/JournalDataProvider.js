@@ -26,7 +26,8 @@ export const saveJournalEntry = (journalEntryObject) => {
         },
         body: JSON.stringify(journalEntryObject)
     })
-        .then(dispatchStateChangeEvent())  // <-- Broadcast the state change event
+    .then(getEntries)
+    .then(dispatchStateChangeEvent)  // <-- Broadcast the state change event
 }
 
 const eventHub = document.querySelector(".container")

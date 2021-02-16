@@ -1,17 +1,19 @@
+import { getMoods, useMoods } from "../moods/MoodProvider.js"
 import { MoodFilter } from "./MoodFilter.js"
 
-/*
- You need to make a new HTML element with a class of
- `filters` in index.html
-*/
+let moods = []
+
+export const FilterBar = () => {
+    getMoods()
+        .then(() => {
+            moods = useMoods()
+            render(moods)
+        })
+}
+
 const contentTarget = document.querySelector(".filters")
-
-const FilterBar = () => {
-    render = () => {
-        contentTarget.innerHTML = `
-            ${MoodFilter()}
-        `
-    }
-
-    render()
+const render = moods => {
+    contentTarget.innerHTML = `
+        ${MoodFilter(moods)}
+    `
 }

@@ -37,3 +37,7 @@ fieldset {
 .journalEntry {
 	margin: 10px;
 }
+
+.moodRadioButton {
+	display: flex;
+}

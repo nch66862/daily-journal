@@ -10,7 +10,7 @@ export const TagFilter = () => {
 
 const eventHub = document.querySelector(".container")
 eventHub.addEventListener("click", clickEvent => {
-    if (changeEvent.target.id === "tagFilter") {
+    if (clickEvent.target.id === "tagFilter") {
         const customEvent = new CustomEvent("tagSearchedEntered", {
             detail: {
                 keyword: changeEvent.target.value

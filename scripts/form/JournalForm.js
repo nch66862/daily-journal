@@ -1,4 +1,4 @@
-import { saveJournalEntry } from '../entries/JournalDataProvider.js'
+import { saveJournalEntry, useJournalEntries } from '../entries/JournalDataProvider.js'
 import { getMoods, useMoods } from '../moods/MoodProvider.js'
 import { getTags, saveTag, useTags } from '../tags/TagProvider.js'
 
@@ -50,24 +50,27 @@ const eventHub = document.querySelector(".container") //define what the eventHub
 eventHub.addEventListener("click", clickEvent => {
     if (clickEvent.target.id === "saveJournalEntry") {
         clickEvent.preventDefault()
-        // Make a new object representation of a note
+        //Handle Tags
         const tagInputArray = document.getElementById("entry-tags").value.split(",")
+        let newTagId = NaN
         getTags()
         .then(() => {
             let existingTagArray = useTags()
-            tagInputArray.map(tag => {
-                const matchingTag = existingTagArray.find(tagObj => tagObj.subject === tag)
+            tagInputArray.map(tagText => {
+                const matchingTag = existingTagArray.find(tagObj => tagObj.subject === tagText)
                 if (matchingTag === undefined) {
-                    const newTag = newTagObject(tag)
-                    saveTag(newTag)
+                    saveTag(newTagObject(tagText))
                     .then(() => {
                         existingTagArray = useTags()
-                        const newTagId = existingTagArray.find(tagObj => tagObj.subject === tag).id
-                        console.log('newTagId: ', newTagId);
+                        newTagId = existingTagArray.find(tagObj => tagObj.subject === tagText).id
                     })
+                }
+                else {
+                    newTagId = existingTagArray.find(tagObj => tagObj.subject === tagText).id
                 }
             })
         })
+        //Handle the Journal Entry
         const newEntry = {
             date: document.getElementById("entry-date").value,
             concept: document.getElementById("entry-concept").value,
@@ -75,14 +78,18 @@ eventHub.addEventListener("click", clickEvent => {
             plans: document.getElementById("entry-plans").value,
             moodId: parseInt(document.getElementById("entry-mood").value)
         }
-        // Change API state and application state
         saveJournalEntry(newEntry)
-        document.getElementById("entry-date").value = ""
-        document.getElementById("entry-concept").value = ""
-        document.getElementById("entry-learned").value = ""
-        document.getElementById("entry-plans").value = ""
-        document.getElementById("entry-mood").value = ""
-        document.getElementById("entry-tags").value = ""
+            .then(() => {
+                const journalEntriesArray = useJournalEntries()
+                const journalEntryId = journalEntriesArray[journalEntriesArray.length-1].id
+            })
+        //Clear the Form
+        // document.getElementById("entry-date").value = ""
+        // document.getElementById("entry-concept").value = ""
+        // document.getElementById("entry-learned").value = ""
+        // document.getElementById("entry-plans").value = ""
+        // document.getElementById("entry-mood").value = ""
+        // document.getElementById("entry-tags").value = ""
 }
 })
 

@@ -63,6 +63,14 @@
       "plans": "Not sure yet. Probably the same.",
       "moodId": 1,
       "id": 8
+    },
+    {
+      "date": "2021-02-17",
+      "concept": "New Entry",
+      "learned": "Nothing yet",
+      "plans": "No plans yet",
+      "moodId": 1,
+      "id": 9
     }
   ],
   "moods": [
@@ -80,6 +88,10 @@
     }
   ],
   "tags": [
+    {
+      "subject": "thisIsIt",
+      "id": 1
+    }
   ],
   "entrytags": [
     {

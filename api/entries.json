@@ -63,46 +63,6 @@
       "plans": "Not sure yet. Probably the same.",
       "moodId": 1,
       "id": 8
-    },
-    {
-      "date": "2021-02-16",
-      "concept": "setrb",
-      "learned": "wearf",
-      "plans": "afse",
-      "moodId": 1,
-      "id": 9
-    },
-    {
-      "date": "2021-02-16",
-      "concept": "liub",
-      "learned": "ouyv",
-      "plans": "uyfy",
-      "moodId": 1,
-      "id": 10
-    },
-    {
-      "date": "2021-02-16",
-      "concept": "fqewf",
-      "learned": "qwec",
-      "plans": "acwe",
-      "moodId": 3,
-      "id": 11
-    },
-    {
-      "date": "2021-02-16",
-      "concept": "ervr",
-      "learned": "avr",
-      "plans": "avwrv",
-      "moodId": 3,
-      "id": 12
-    },
-    {
-      "date": "2021-02-16",
-      "concept": "ad",
-      "learned": "vcad",
-      "plans": "vasd",
-      "moodId": 3,
-      "id": 13
     }
   ],
   "moods": [
@@ -120,34 +80,6 @@
     }
   ],
   "tags": [
-    {
-      "id": 1,
-      "subject": "API"
-    },
-    {
-      "id": 2,
-      "subject": "components"
-    },
-    {
-      "id": 3,
-      "subject": "fetch"
-    },
-    {
-      "subject": "mhmm",
-      "id": 4
-    },
-    {
-      "subject": "nono",
-      "id": 5
-    },
-    {
-      "subject": "yesyesyes",
-      "id": 6
-    },
-    {
-      "subject": "pot",
-      "id": 7
-    }
   ],
   "entrytags": [
     {

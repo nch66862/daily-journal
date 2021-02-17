@@ -61,7 +61,7 @@ eventHub.addEventListener("click", clickEvent => {
                     const newTag = newTagObject(tag)
                     saveTag(newTag)
                     .then(() => {
-                        let existingTagArray = useTags()
+                        existingTagArray = useTags()
                         const newTagId = existingTagArray.find(tagObj => tagObj.subject === tag).id
                         console.log('newTagId: ', newTagId);
                     })

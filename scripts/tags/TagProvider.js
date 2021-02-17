@@ -19,7 +19,7 @@ export const findTag = (subject) => {
 
 export const saveTag = newTag => {
     // Use `fetch` with the POST method to add your entry to your API
-    fetch("http://localhost:8088/tags", {
+    return fetch("http://localhost:8088/tags", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"

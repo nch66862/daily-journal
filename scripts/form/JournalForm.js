@@ -52,23 +52,31 @@ eventHub.addEventListener("click", clickEvent => {
         clickEvent.preventDefault()
         //Handle Tags
         const tagInputArray = document.getElementById("entry-tags").value.split(",")
-        let newTagId = new Promise((resolve, reject) => {
+        let newTagsIds = []
+        let singleTagId = null
+        let newTagIdPromise = new Promise((resolve) => {
             getTags()
                 .then(() => {
                     let existingTagArray = useTags()
-                    tagInputArray.map(tagText => {
-                        const matchingTag = existingTagArray.find(tagObj => tagObj.subject === tagText)
-                        if (matchingTag === undefined) {
-                            saveTag(newTagObject(tagText))
-                                .then(() => {
-                                    existingTagArray = useTags()
-                                    resolve(existingTagArray.find(tagObj => tagObj.subject === tagText).id)
-                                })
-                        }
-                        else {
-                            resolve(existingTagArray.find(tagObj => tagObj.subject === tagText).id)
-                        }
+                    newTagsIds = tagInputArray.map(tagText => {
+                        const iDPromise = new Promise((resolve) => {
+                            const matchingTag = existingTagArray.find(tagObj => tagObj.subject === tagText)
+                            if (matchingTag === undefined) {
+                                saveTag(newTagObject(tagText))
+                                    .then(() => {
+                                        existingTagArray = useTags()
+                                        singleTagId = existingTagArray.find(tagObj => tagObj.subject === tagText).id
+                                        resolve(singleTagId)
+                                    })
+                            }
+                            else {
+                                singleTagId = existingTagArray.find(tagObj => tagObj.subject === tagText).id
+                                resolve(singleTagId)
+                            }
+                        })
+                        return Promise.any([iDPromise])
                     })
+                    resolve("finished")
                 })
         })
         //Handle the Journal Entry
@@ -80,13 +88,14 @@ eventHub.addEventListener("click", clickEvent => {
             moodId: parseInt(document.getElementById("entry-mood").value)
         }
         let journalEntryId = saveJournalEntry(newEntry).then(() => {
-                const journalEntriesArray = useJournalEntries()
-                return journalEntriesArray[journalEntriesArray.length - 1].id
-            })
+            const journalEntriesArray = useJournalEntries()
+            return journalEntriesArray[journalEntriesArray.length - 1].id
+        })
         //Build the Join Table Element
-        Promise.all([newTagId, journalEntryId]).then((ids) => {
-            console.log(ids);
-        });
+        Promise.all([newTagIdPromise, journalEntryId]).then((ids) => {
+            console.log(ids)
+            console.log(newTagsIds)
+        })
 
         //Clear the Form
         // document.getElementById("entry-date").value = ""

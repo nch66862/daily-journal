@@ -52,23 +52,24 @@ eventHub.addEventListener("click", clickEvent => {
         clickEvent.preventDefault()
         //Handle Tags
         const tagInputArray = document.getElementById("entry-tags").value.split(",")
-        let newTagId = NaN
-        getTags()
-        .then(() => {
-            let existingTagArray = useTags()
-            tagInputArray.map(tagText => {
-                const matchingTag = existingTagArray.find(tagObj => tagObj.subject === tagText)
-                if (matchingTag === undefined) {
-                    saveTag(newTagObject(tagText))
-                    .then(() => {
-                        existingTagArray = useTags()
-                        newTagId = existingTagArray.find(tagObj => tagObj.subject === tagText).id
+        let newTagId = new Promise((resolve, reject) => {
+            getTags()
+                .then(() => {
+                    let existingTagArray = useTags()
+                    tagInputArray.map(tagText => {
+                        const matchingTag = existingTagArray.find(tagObj => tagObj.subject === tagText)
+                        if (matchingTag === undefined) {
+                            saveTag(newTagObject(tagText))
+                                .then(() => {
+                                    existingTagArray = useTags()
+                                    resolve(existingTagArray.find(tagObj => tagObj.subject === tagText).id)
+                                })
+                        }
+                        else {
+                            resolve(existingTagArray.find(tagObj => tagObj.subject === tagText).id)
+                        }
                     })
-                }
-                else {
-                    newTagId = existingTagArray.find(tagObj => tagObj.subject === tagText).id
-                }
-            })
+                })
         })
         //Handle the Journal Entry
         const newEntry = {
@@ -78,11 +79,15 @@ eventHub.addEventListener("click", clickEvent => {
             plans: document.getElementById("entry-plans").value,
             moodId: parseInt(document.getElementById("entry-mood").value)
         }
-        saveJournalEntry(newEntry)
-            .then(() => {
+        let journalEntryId = saveJournalEntry(newEntry).then(() => {
                 const journalEntriesArray = useJournalEntries()
-                const journalEntryId = journalEntriesArray[journalEntriesArray.length-1].id
+                return journalEntriesArray[journalEntriesArray.length - 1].id
             })
+        //Build the Join Table Element
+        Promise.all([newTagId, journalEntryId]).then((ids) => {
+            console.log(ids);
+        });
+
         //Clear the Form
         // document.getElementById("entry-date").value = ""
         // document.getElementById("entry-concept").value = ""
@@ -90,7 +95,7 @@ eventHub.addEventListener("click", clickEvent => {
         // document.getElementById("entry-plans").value = ""
         // document.getElementById("entry-mood").value = ""
         // document.getElementById("entry-tags").value = ""
-}
+    }
 })
 
 const newTagObject = newTag => {
